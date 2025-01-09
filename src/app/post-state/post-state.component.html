@@ -1,0 +1,5 @@
+<button (click)="btnClick()"> click </button>
+
+
+<div *ngFor="let post of posts$ | async">
+    <div> {{ post.title }} </div>

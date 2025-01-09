@@ -1,0 +1,7 @@
+<div class="star-container">
+    @for(star of stars;let i = $index;track i){
+    <div class="stars">
+        <span class="star" (click)="onClickStar(i)">&#9733;</span>
+    </div>
+    }
+</div>

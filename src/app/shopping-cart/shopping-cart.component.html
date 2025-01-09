@@ -1,0 +1,11 @@
+<div *ngFor="let product of products" class="cart-container">
+    <div class="">
+        <button class="minus-btn" (click)="decrementCount(product)"> - </button>
+        <input type="number" [value]="getCount(product.id)" readonly />
+        <button class="plus-btn" (click)="incrementCount(product)"> + </button>
+    </div>
+    <div class="cart-total">
+        <span>Total : </span>
+        <input type="number" [value]="getSubTotal(product.id)" readonly />
+    </div>
+</div>

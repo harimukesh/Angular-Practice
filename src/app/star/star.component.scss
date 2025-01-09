@@ -1,0 +1,13 @@
+.star-container {
+    display: flex;
+    justify-content: center;
+}
+
+.stars {
+    cursor: pointer;
+}
+
+.star {
+    font-size: 40px;
+    color: grey;
+}
