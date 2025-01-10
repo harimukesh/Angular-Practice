@@ -8,10 +8,12 @@ export interface Counter {
 
 export interface ShoppingcartState {
     items: { [id: number]: Counter };
+    total: number;
 }
 
 export const initialState: ShoppingcartState = {
-    items: {}
+    items: {},
+    total: 0
 };
 
 export const shoppingCartReducer = createReducer(
@@ -28,7 +30,8 @@ export const shoppingCartReducer = createReducer(
             items: {
                 ...state.items,
                 [id]: newItem
-            }
+            },
+            total: state.total + value
         };
     }),
     on(decrement, (state, { id, value }) => {
@@ -40,6 +43,7 @@ export const shoppingCartReducer = createReducer(
         };
         return {
             ...state,
+            total: state.items[id].subTotal === 0 ? state.total : state.total - value,
             items: {
                 ...state.items,
                 [id]: newItem

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { selectCount, selectSubTotal } from './store/selector';
+import { selectCount, selectSubTotal, selectTotal } from './store/selector';
 import { select, Store } from '@ngrx/store';
 import { ShoppingcartState } from './store/reducer';
 import { CommonModule } from '@angular/common';
@@ -29,18 +29,16 @@ export class ShoppingCartComponent {
   constructor(private store: Store<ShoppingcartState>) {
   }
 
-  getCount(productId: number): number {
-    this.store.pipe(select(selectCount, { id: productId })).subscribe((value) => {
-      this.count = value;
-    });
-    return this.count;
+  getCount(productId: number): Observable<number> {
+    return this.store.pipe(select(selectCount, { id: productId }))
   }
 
-  getSubTotal(productId: number): number {
-    this.store.pipe(select(selectSubTotal, { id: productId })).subscribe((value) => {
-      this.subTotal = value;
-    });
-    return this.subTotal;
+  getSubTotal(productId: number): Observable<number> {
+    return this.store.pipe(select(selectSubTotal, { id: productId }))
+  }
+
+  getTotal(): Observable<number> {
+    return this.store.pipe(select(selectTotal))
   }
 
   incrementCount(product: any) {

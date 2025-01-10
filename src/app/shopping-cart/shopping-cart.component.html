@@ -1,11 +1,15 @@
 <div *ngFor="let product of products" class="cart-container">
     <div class="">
         <button class="minus-btn" (click)="decrementCount(product)"> - </button>
-        <input type="number" [value]="getCount(product.id)" readonly />
+        <input type="number" [value]="getCount(product.id) | async" readonly />
         <button class="plus-btn" (click)="incrementCount(product)"> + </button>
     </div>
-    <div class="cart-total">
+    <div class="cart-subtotal">
         <span>Total : </span>
-        <input type="number" [value]="getSubTotal(product.id)" readonly />
-    </div>
+        <input type="number" [value]="getSubTotal(product.id) | async" readonly />
+    </div><br>
+</div>
+<div class="cart-total">
+    <span>Grand Total : </span>
+    <input type="number" [value]="getTotal() | async" readonly />
 </div>

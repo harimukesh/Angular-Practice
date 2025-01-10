@@ -12,3 +12,8 @@ export const selectCount = createSelector(
     selectCartState,
     (state: ShoppingcartState, props: { id: number }) => state.items[props.id]?.count || 0
 );
+
+export const selectTotal = createSelector(
+    selectCartState,
+    (state: ShoppingcartState) => state.total
+);

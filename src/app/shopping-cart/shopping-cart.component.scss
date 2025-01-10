@@ -28,3 +28,12 @@ input {
     background-color: #ffffff;
     padding: 10px 10px;
 }
+
+.cart-total {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+}
