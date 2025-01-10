@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { increment, decrement } from './action';
+import { increment, decrement, deleteCart } from './action';
 
 export interface Counter {
     count: number;
@@ -44,6 +44,23 @@ export const shoppingCartReducer = createReducer(
         return {
             ...state,
             total: state.items[id].subTotal === 0 ? state.total : state.total - value,
+            items: {
+                ...state.items,
+                [id]: newItem
+            }
+        };
+    }),
+
+    on(deleteCart, (state, { id }) => {
+        const deletedItem = state.items[id] || { count: 0, subTotal: 0 };
+        const newItem = {
+            ...deletedItem,
+            count: 0,
+            subTotal: 0
+        };
+        return {
+            ...state,
+            total: state.total - state.items[id].subTotal,
             items: {
                 ...state.items,
                 [id]: newItem

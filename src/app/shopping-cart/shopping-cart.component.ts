@@ -4,7 +4,7 @@ import { selectCount, selectSubTotal, selectTotal } from './store/selector';
 import { select, Store } from '@ngrx/store';
 import { ShoppingcartState } from './store/reducer';
 import { CommonModule } from '@angular/common';
-import { decrement, increment } from './store/action';
+import { decrement, deleteCart, increment } from './store/action';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -47,6 +47,14 @@ export class ShoppingCartComponent {
 
   decrementCount(product: any) {
     this.store.dispatch(decrement({ id: product.id, value: product.price }));
+  }
+
+  removeProduct(product: any) {
+    this.store.dispatch(decrement({ id: product.id, value: product.price }));
+  }
+
+  deleteCart(productId: number) {
+    this.store.dispatch(deleteCart({ id: productId }));
   }
 
 }

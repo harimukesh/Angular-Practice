@@ -4,6 +4,8 @@
         <input type="number" [value]="getCount(product.id) | async" readonly />
         <button class="plus-btn" (click)="incrementCount(product)"> + </button>
     </div>
+    <img class="remove-img" src="https://cdn-icons-png.flaticon.com/512/2984/2984959.png" alt="product"
+        (click)="deleteCart(product.id)" />
     <div class="cart-subtotal">
         <span>Total : </span>
         <input type="number" [value]="getSubTotal(product.id) | async" readonly />
